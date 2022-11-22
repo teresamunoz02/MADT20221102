@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MADT20221102</string>
+    <string name="add_note">Add note</string>
+    <string name="msg_last_saved_note" translatable="false"> Last saved note </string>
+    <string name="update_note" translatable="false">Update note</string>
+    <string name="remove_note" translatable="false">Delete note</string>
+    <string name="dunno" translatable="false">Dunno</string>
+    <string name="msg_updated_clicked" translatable="false">update note</string>
+    <string name="msg_dunno_clicked" translatable="false">dunno</string>
+    <string name="note_text" translatable="false">New note</string>
+    <string name="save_and_close" translatable="false">Save and close</string>
+
+
+</resources>
