@@ -31,14 +31,9 @@ public class AddNoteActivity extends AppCompatActivity {
 
 
     public void onBtnSaveAndCloseClick(View view) {
-        String t = this.edNote.getText().toString();
-        System.out.println(t);
-        if (t.isEmpty()){
-            Context context = getApplicationContext();
-            CharSequence text = "Warning: Empty Note!";
-            int duration = Toast.LENGTH_LONG;
+        if (this.edNote.getText().toString().isEmpty()){
 
-            Toast.makeText(getApplicationContext(), R.string.msg_updated_clicked, Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Warning: Empty Note!", Toast.LENGTH_LONG).show();
 
         }else {
 

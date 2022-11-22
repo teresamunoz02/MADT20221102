@@ -55,6 +55,7 @@ public class DeleteNoteActivity extends AppCompatActivity {
 
                 new AlertDialog.Builder(DeleteNoteActivity.this)
                         .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Are you sure?")
                         .setMessage("Deleting this note")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
@@ -62,13 +63,36 @@ public class DeleteNoteActivity extends AppCompatActivity {
                                 listNoteItems.remove(itemToDelete);
                                 adapter.notifyDataSetChanged();
                                 SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(Constants.NOTES_FILE, Context.MODE_PRIVATE);
-                                HashSet<String> set = new HashSet<>(listNoteItems);
-                                sharedPreferences.edit().putStringSet("notes", null).apply();
+                                SharedPreferences.Editor editor = sharedPref.edit();
+
+                                Set<String> set =new HashSet<>();
+                                set.addAll(listNoteItems);
+
+                                editor.remove(Constants.NOTES_ARRAY_KEY).apply();
+                                editor.putStringSet(Constants.NOTES_ARRAY_KEY, set).apply();
+
+                             /*   editor.clear().apply();
+                                editor.
+                                Set<String> set = new HashSet<>(listNoteItems);
+                                //sharedPreferences.edit().putStringSet("notes", null).apply();
+                                set = sharedPreferences.getStringSet(Constants.NOTES_ARRAY_KEY, null);
+                                if(set != null) {
+                                    listNoteItems.clear();
+                                    listNoteItems.addAll(savedSet);
+                                    adapter.notifyDataSetChanged();
+                                }
+
+                              */
+
                             }
                         }).setNegativeButton("NO", null).show();
                 return true;
             }
         });
 
+    }
+
+    public void onBtnBack(View view) {
+        finish();
     }
 }
